@@ -40,3 +40,14 @@ node_modules/
 4. Make sure to install npm i dotenv (Confirm the dependency in the package.json)
 
 5. Require it and add the config method. require('dotenv').config();  // now process.env should have access to your .env file and entries, try to log it.
+
+
+## Styling the Template
+----
+
+1. First we need to configure our public folder so we can share our public files, css and images.
+
+```
+app.use(express.static(__dirname + '/public')); // Remember to not include public in the url links.
+
+```

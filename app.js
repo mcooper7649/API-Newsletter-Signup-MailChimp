@@ -18,9 +18,7 @@ app.get("/", function (req, res){
     // res.send("Server is up and running.")
 })
 
-app.get('/styles.css', function(req, res) {
-    res.sendFile(__dirname + "/" + "styles.css");
-  });
+
  
 
 

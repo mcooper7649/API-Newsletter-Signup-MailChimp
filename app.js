@@ -8,6 +8,8 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(express.static(__dirname + '/public')); // Remember to not include public in the url links.
+
 
 app.get("/", function (req, res){
     res.sendFile(__dirname + "/signup.html");
@@ -15,6 +17,11 @@ app.get("/", function (req, res){
     
     // res.send("Server is up and running.")
 })
+
+app.get('/styles.css', function(req, res) {
+    res.sendFile(__dirname + "/" + "styles.css");
+  });
+ 
 
 
 
@@ -26,10 +33,10 @@ app.post("/", function (req, res){
         console.log(response.statusCode)
 
         response.on("data", function(data){
-            const mailData = JSON.parse(data);
-            const temp = mailData.main.temp;
-            const icon = mailData.weather[0].icon;
-            const iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+            // const mailData = JSON.parse(data);
+            // const temp = mailData.main.temp;
+            // const icon = mailData.weather[0].icon;
+            // const iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
             
 
             res.write("");

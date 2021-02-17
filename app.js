@@ -20,6 +20,8 @@ app.get("/", function (req, res){
 })
 
 
+
+
  
 
 
@@ -75,6 +77,10 @@ app.post("/", function (req, res){
 
 app.post("/failure", function(req, res){
     res.redirect("/")
+})
+
+app.post("/success", function(req, res){
+    res.redirect('http://mycodedojo.com')
 })
 
 

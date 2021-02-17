@@ -118,3 +118,19 @@ if (response.statusCode === 200){
 3. Lets Bootstrap our Success and Failure pages and req.sendfile their routes.
 
 4. Lets add app.post to the "/failure" route. So the user can leave the failure page back to the "/" home route. aka signup page
+
+
+## HEROKU SERVER CONFIGURATION
+---
+
+1. Make Sure Heroku CLI is configured correctly. IE, node, git, npm are all installed and up to date.
+
+2. On the app.js we need to re-configure the ports. add process.env.PORT
+
+3. Create Procfile This tells heroku how to run the app.  no file extensions and needs to be capitalized. This tells the server how to run the application.  
+
+web: node app.js    in our instance.
+
+4. Once we have everything updated on github we can do a heroku create from the console. If successfull you will generate a url and if you visit you will be prompted by a success but not by your site. 
+
+5. PUSH lastest revision to Heroku   git push heroku master

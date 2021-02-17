@@ -24,24 +24,28 @@ app.get("/", function (req, res){
 
 
 app.post("/", function (req, res){
-    console.log(process.env)
-    const query = req.body.cityName;
-    const url = process.env.API_URL + query + "&appid=" + process.env.API_KEY;
-    https.get(url, function(response){
-        console.log(response.statusCode)
+    // console.log(process.env)
+    // const query = req.body;
+    var firstName = req.body.fName;
+    var lastName = req.body.lName;
+    var email = req.body.email;
+    console.log(email)
+    // const url = process.env.API_URL + query + "&appid=" + process.env.API_KEY;
+//     https.get(url, function(response){
+//         console.log(response.statusCode)
 
-        response.on("data", function(data){
-            // const mailData = JSON.parse(data);
-            // const temp = mailData.main.temp;
-            // const icon = mailData.weather[0].icon;
-            // const iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+//         response.on("data", function(data){
+//             // const mailData = JSON.parse(data);
+//             // const temp = mailData.main.temp;
+//             // const icon = mailData.weather[0].icon;
+//             // const iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
             
 
-            res.write("");
-            res.send();
-        })
+//             res.write("");
+//             res.send();
+//         })
     
-});
+// });
 })
 
 

@@ -96,3 +96,25 @@ app.use(express.static(__dirname + '/public')); // Remember to not include publi
 9. Add Response.on callback function
 
 10. Then we need to take our jsonData and call request.write
+
+
+## Create a Success or Fail Page after Submission
+---
+
+
+1. We need to Determine what response code is returned from our request. If the response code is 200, it was a success. anything else and it is a failure. 
+
+2. So we can add an if statement inside our request/response callback. 
+
+```
+if (response.statusCode === 200){
+    do this
+} else {
+    do this
+}
+
+```
+
+3. Lets Bootstrap our Success and Failure pages and req.sendfile their routes.
+
+4. Lets add app.post to the "/failure" route. So the user can leave the failure page back to the "/" home route. aka signup page

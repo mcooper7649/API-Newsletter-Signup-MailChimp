@@ -2,6 +2,7 @@ const express = require ("express");
 const https = require("https");
 const bodyParser = require("body-parser");
 
+
 require('dotenv').config();
 
 const app = express();
@@ -26,26 +27,42 @@ app.get("/", function (req, res){
 app.post("/", function (req, res){
     // console.log(process.env)
     // const query = req.body;
-    var firstName = req.body.fName;
-    var lastName = req.body.lName;
-    var email = req.body.email;
-    console.log(email)
-    // const url = process.env.API_URL + query + "&appid=" + process.env.API_KEY;
-//     https.get(url, function(response){
-//         console.log(response.statusCode)
+    const firstName = req.body.fName;
+    const lastName = req.body.lName;
+    const email = req.body.email;
 
-//         response.on("data", function(data){
-//             // const mailData = JSON.parse(data);
-//             // const temp = mailData.main.temp;
-//             // const icon = mailData.weather[0].icon;
-//             // const iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-            
+    const data = {
+        members: [
+            {
+                email_address: email,
+                status: "subscribed",
+                merge_fields: {
+                    FNAME: firstName,
+                    LNAME: lastName
+                }
+            }
+        ]
+    };
 
-//             res.write("");
-//             res.send();
-//         })
-    
-// });
+    const jsonData  = JSON.stringify(data);
+
+    const url = "https://us19.api.mailchimp.com/3.0/lists/1dbb72578e"
+
+    const options = {
+        method: "POST",
+        auth: "Michael:" + process.env.API_KEY
+    }
+
+   const request = https.request(url, options, function(response){
+        response.on("data", function(data){
+            console.log(JSON.parse(data))
+        })
+    })
+
+
+    request.write(jsonData)
+    request.end();
+
 })
 
 
@@ -53,3 +70,7 @@ app.post("/", function (req, res){
 app.listen(3000, function(){
     console.log("Successfully Connected to Port 3000");
 })
+
+
+
+// LIST ID 1dbb72578e
